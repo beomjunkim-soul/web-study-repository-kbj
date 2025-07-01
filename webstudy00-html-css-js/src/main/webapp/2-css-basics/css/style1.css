@@ -1,0 +1,24 @@
+@charset "UTF-8";
+body{
+    padding: 20px;
+    background-color: aliceblue;
+    margin: 0;
+}
+.main-title{
+    color: #7aae7d;
+    text-align: center;
+    border-bottom: 2px solid #131313;
+    padding-bottom : 20px;
+}
+.intro{
+    font-size : 19px;
+    line-height: 2;
+    color: rgb(231, 88, 126);
+}
+.box{
+    background-color: #f7c87c;
+    text-align: center;
+    border: 2px solid #e12e2e;
+    padding: 20px;
+    margin-top: 50px 0;
+}

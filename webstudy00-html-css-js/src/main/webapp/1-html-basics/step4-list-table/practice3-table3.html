@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Table 실습</title>
+    <style>
+      table {
+        width: 100%;
+        border-collapse: collapse; /* 테두리 겹치게 설정*/
+      }
+      th {
+        background-color: rgb(200, 300, 400);
+      }
+      th,
+      td {
+        border: 1px solid black; /* 테두리 설정 */
+        padding: 8px; /* 셀 안쪽 여백 */
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>테이블 공부 예제</h1>
+    <h2>분기별 부서 실적표</h2>
+    <table>
+      <caption>
+        2024년 분기별 부서 실적(단위:백만원)
+      </caption>
+      <thead>
+        <tr>
+          <th rowspan="2" scope="col">부서</th>
+          <!-- 웹 접근성 scope = "colgroup" 열그룹을 대표-->
+          <th colspan="4" scope="colgroup">2025년 분기별 실적</th>
+          <th rowspan="2" scope="col">연간 합계</th>
+        </tr>
+        <tr>
+          <th>1분기</th>
+          <th>2분기</th>
+          <th>3분기</th>
+          <th>4분기</th>
+        </tr>
+      </thead>
+      <!-- tbody: 테이블 본문 그룹 -->
+      <tbody>
+        <tr>
+          <th scope="row">영업팀</th>
+          <td>150</td>
+          <td>180</td>
+          <td>200</td>
+          <td>170</td>
+          <td><strong>700</strong></td>
+        </tr>
+        <tr>
+          <th scope="row">개발팀</th>
+          <td>120</td>
+          <td>140</td>
+          <td>160</td>
+          <td>145</td>
+          <td><strong>565</strong></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th scope="row">총합계</th>
+          <td>350</td>
+          <td>415</td>
+          <td>470</td>
+          <td>400</td>
+          <td><strong>1,635</strong></td>
+        </tr>
+      </tfoot>
+    </table>
+  </body>
+</html>
