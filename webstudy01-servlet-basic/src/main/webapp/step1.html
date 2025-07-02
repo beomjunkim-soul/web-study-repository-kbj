@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>link 와 Servlet 연동</title>
+</head>
+<body>
+<h3>html link로 Servlet 호출</h3>
+<!-- 
+	html link는 get 방식 요청
+	HeLLoServLet : 처리할 서버 URL - 서블릿의 설정 @WebServlet("/HelloServlet")
+	?: 구분자
+	postNo=7 : 쿼리 스트링 query string -> 웹에서 왔다갔다하는 것은 무조건 String 문자열 타입 
+	& : 쿼리 스트링 여러 개 전송할 때 사용
+	userName=무니무니
+-->
+
+<a href="h?postNO=7&userName=무니무니">게시글보기</a>
+</body>
+</html>
