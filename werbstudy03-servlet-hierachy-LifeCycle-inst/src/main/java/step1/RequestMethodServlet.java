@@ -49,9 +49,7 @@ public class RequestMethodServlet extends HttpServlet {
     			
     			//클라이언트가 보낸 정보를 반환받는다
     			String info = request.getParameter("searchKeyword");
-    			String str = null;
-    			str.length();
-    			out.println("<strong>검색어는"+info+"입니다</strong>");
+    			out.println("<strong>검색어는 "+info+" 입니다</strong>");
     			out.println("</body>");
     			out.println("</html>");
     			out.close();
