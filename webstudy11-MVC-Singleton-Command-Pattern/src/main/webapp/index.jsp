@@ -20,10 +20,11 @@
 </form>
 <br><br>
 <%-- 다양한 요청을 Front 즉 하나의 진입점에서 처리하도록 한다
-	 index -- 고객 등록 요청 -- FrontControllerServlet
-	 						doDispatch() ------- MockeDao
-	 						|
-	 						|
+	 index -- 고객 등록 요청 -- FrontControllerServlet  Controller
+	 						doDispatch() -------         |   MockeDao
+	 						|							 |
+	 						|						 RegisterCustomerController
+	 						|							 |
 	 						register-result.jsp 로 리다이렉트
  --%>
 <form action="FrontControllerServletVer4" method="post">

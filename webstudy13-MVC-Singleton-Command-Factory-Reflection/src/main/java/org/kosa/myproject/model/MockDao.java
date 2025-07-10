@@ -23,4 +23,9 @@ public class MockDao {
 	}
 	public void updateCustomer(CustomerVo customerVo) {
 		System.out.println(getClass()+" 고객정보를 수정" + customerVo);
-	}}
+	}
+	public void deleteCustomer(String id) {
+		System.out.println(getClass()+" 고객정보를 삭제 "+id);
+	}
+	
+}
