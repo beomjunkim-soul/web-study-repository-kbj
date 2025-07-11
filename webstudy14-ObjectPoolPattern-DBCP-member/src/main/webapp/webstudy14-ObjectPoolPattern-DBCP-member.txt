@@ -545,7 +545,7 @@ String의 @Controller -> Command( or Controller )
     
 Command Pattern 적용 후 refactoring 할 점
 
-: FrontControllerServlet(Front) 의 doDispatch() 에서 클라이언트의 요청을 처리할 개별 컨트롤러 객체 생성부가 요청 사항이 증가할수록 
+: FrontControllerServlet(Front) 의 doDispathc() 에서 클라이언트의 요청을 처리할 개별 컨트롤러 객체 생성부가 요청 사항이 증가할수록 
   코드량이 증가 --> 단일 책임 원칙의 의해 객체 생성부를 별도의 클래스로 분리(Factory 패턴) 필요성 발생
   다음 Version 에서 Factory 디자인 패턴을 적용해보자
   
@@ -604,8 +604,60 @@ Command Pattern 적용 후 refactoring 할 점
 				controller = new FindCustomerByIdController();
 			}else if 
 			....
-  ******************************************************
+
+  ver 6: Dynamic Factory Pattern 적용
+  		 요구정의 
+ 		 우리의 Refactoring 지점은 클라이언트의 요청(command)에 대한 처리 로직을 정의한 객체들을
+ 		 HandlerMapping Factory 에서 전담해 객체를 생성 -> 요청의 종류가 증가( 업무 추가 )되므로
+ 		 개별 요청 처리 컨트롤러 객체가 신규로 계속 추가되면 ver5 정적 factory 스타일은 매번 컨트롤러 추가 될 때마다
+ 		 코드를 수정해야 함 ==> 자동화 필요 => 자동화 방안 : Reflection API 를 이용해 팩토리 ( HandlerMapping ) 를 Dynamic 하게
+ 		 동작시키도록 버전업을 한다
+		
+ 		기술 개념 정리
+ 		Reflection API : 런타임시 동적으로 객체를 생성하고 제어
+ 	 	일반적으로 필요시 객체를 생성 : Person p = new Person(); 와 같이 new로 생성
+  		Reflection API 는 런타임(프로그램 실행 중)시에 동적 Dynamic 으로 객체를 생성,
+ 		제어하기 위한 기술 
+ 		
+ 		단위 테스트 test1, test2  기술 적용
+ 		
+ 		기존 Ver5 를 Reflection API를 이용한 Dynamic Factory 를 적용해 HandlerMapping을 정적 팩토리에서 동적 팩토리로 버전업을 해본다
+ 		Ver6 : 클라이언트에서 command=FindCustomerById로 FrontController 로 전달 <---> HandlerMapping(Factory)가 컨트롤러 객체 생성 전담
+ 			   Dynamic Factory 를 위한 작업: HandlerMapping 의 create(command) 구현부만 업데이트
+ 			   ( Command 와 Factory 패턴을 적용한 성과 )
+  ***************************************************************************
+  Object Pool Design Pattern 객체 풀 패턴
+  객체 생성 및 소멸에 드는 자원소모를 줄여 성능을 향상시키고 자원 낭비를 막는
+  목적의 디자인 패턴 
+  객체 생성에 드는 비용이 많은 객체 (ex- 데이터베이스 연동시 Connection 객체)
+  들을 미리 생성해서 Pool(풀)에 저장해두고 사용 후 다시 풀에
+  반납하여 재사용하는 방식 
+  
+  -> DBCP : Database Connection Pool ==> Object Pool Design Pattern 적용의 대표적인 예
+     DB 컨넥션들을 pool에 미리 생성하고 사용시 빌려주고 사용마치면 반납받는 방식으로 시스템 성능을 향상
+     
+     DataSource Interface : javax.sql.DataSource
+     						다양한 DBCP 객체들(BasicDataSource, Hikari CP 등) 을 표준화된 방식으로 관리하기 위한 인터페이스
+     BasicDataSource : apache tomcat에서 제공하는 DBCP 구현체, javax.sql.DataSource interface의 하위 클래스(구현체)
+     
+     org.kosa.myproject.model.DataSourceManager 에 DBCP 를 구성해서 Web Application 의 Dao에서 사용해본다
     
+     							
+     							
+     							
+     							
+     							
+     							
+     							
+     							
+     							
+     							
+     							
+     							
+     							
+     							
+     							
+     							
      												
      												
      												

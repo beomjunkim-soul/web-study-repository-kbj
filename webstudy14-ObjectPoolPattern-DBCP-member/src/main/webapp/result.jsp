@@ -4,10 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>고객 등록 결과</title>
+<title>result</title>
 </head>
 <body>
-<h3>고객 정보가 등록되었습니다</h3>
-<a href="index.jsp">Home으로 가기</a>
+<h1>결과페이지: 맛점하세요</h1>
 </body>
 </html>
